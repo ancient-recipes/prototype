@@ -1,0 +1,129 @@
+:root {
+  --background: #1b0c08;
+  --terracotta: #b83a0e;
+  --gold: #f1b74a;
+  --parchment: #f1e0ce;
+  --paper: #f2eee4;
+  --script: #b79079;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  color: var(--parchment);
+  font-family: "EB Garamond", serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.site-header {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  padding: clamp(35px, 5vh, 58px) clamp(36px, 4.4vw, 84px) 0;
+}
+
+.logo {
+  display: inline-flex;
+  flex-direction: column;
+  color: var(--parchment);
+  font-family: "Pirata One", serif;
+  font-size: clamp(30px, 2.2vw, 42px);
+  line-height: .82;
+  letter-spacing: .025em;
+}
+
+.logo span:last-child {
+  margin-left: 25px;
+}
+
+.pill-link {
+  min-width: 162px;
+  padding: 9px 30px 11px;
+  border: 1px solid var(--parchment);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--parchment);
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
+}
+
+.pill-link:hover {
+  border-color: var(--gold);
+  background: var(--terracotta);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.loading {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  visibility: visible;
+  background: var(--background);
+  color: var(--parchment);
+  font-family: "Pirata One", serif;
+  font-size: 25px;
+  letter-spacing: .05em;
+  opacity: 1;
+  transition: opacity .45s ease, visibility .45s ease;
+}
+
+.loading.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+@media (max-width: 620px) {
+  .site-header {
+    padding: 25px 22px 0;
+  }
+
+  .logo {
+    font-size: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

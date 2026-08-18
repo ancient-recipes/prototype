@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ancient Recipes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+  href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=La+Belle+Aurore&family=Pirata+One&display=swap"
+  rel="stylesheet"
+>
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <main class="prototype">
+
+    <div class="manuscript-background" aria-hidden="true">
+        <span class="manuscript-note note-one">From distant tables and forgotten kitchens…</span>
+        <span class="manuscript-note note-two">Gather the grain, warm the hearth…</span>
+        <span class="manuscript-note note-three">Recorded by hand and carried through generations…</span>
+        <span class="manuscript-note note-four">A recipe is a memory preserved.</span>
+      </div>
+
+    <header class="site-header">
+      <a class="logo" href="index.html" aria-label="Ancient Recipes home">
+        <span>Ancient</span>
+        <span>Recipes</span>
+      </a>
+
+      <nav class="navigation" aria-label="Main navigation">
+        <a class="pill-link" href="recipes.html">Recipes</a>
+        <a class="pill-link" href="about.html">About</a>
+      </nav>
+    </header>
+
+    <section class="hero-interface" aria-labelledby="page-title">
+
+
+      <div class="hero-content">
+        <p class="eyebrow">WELCOME TO</p>
+        <h1 id="page-title">
+          <span>A Culinary</span>
+          <span>History</span>
+        </h1>
+
+        <div class="hero-description-wrap">
+          <p class="hero-description">
+            Explore a collection of preserved recipes from centuries ago and discover the stories behind each dish.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="loading" id="loading">Loading the library…</div>
+  </main>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>

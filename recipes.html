@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recipes — Ancient Recipes</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+  href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Pirata+One&display=swap"
+  rel="stylesheet"
+>
+  <link rel="stylesheet" href="css/shared.css" />
+  <link rel="stylesheet" href="css/recipes.css" />
+</head>
+
+<body>
+  <main class="prototype">
+
+    <header class="site-header">
+      <a class="logo" href="index.html" aria-label="Ancient Recipes home">
+        <span>Ancient</span>
+        <span>Recipes</span>
+      </a>
+
+      <nav class="navigation" aria-label="Main navigation">
+        <a class="active pill-link" href="index.html">Home</a>
+      </nav>
+    </header>
+
+    <a
+      class="start-recipe-button pill-link"
+      id="startRecipeButton"
+      href="recipe-01.html"
+      aria-hidden="true"
+      tabindex="-1"
+    >Start</a>
+
+    <div class="loading" id="loading">Loading recipe books…</div>
+
+  </main>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
+    }
+  </script>
+
+  <script type="module" src="js/recipes.js"></script>
+</body>
+</html>

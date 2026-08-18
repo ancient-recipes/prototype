@@ -1,0 +1,93 @@
+body {
+  overflow: hidden;
+  background-color: var(--background);
+  background-image: url("../assets/empty-shelf.png");
+  background-position: center 85%;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+@media (orientation: portrait) {
+  body { background-size: auto 115%; }
+}
+
+.prototype {
+  position: relative;
+  isolation: isolate;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+canvas {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+canvas.dragging { cursor: grabbing; }
+body.overview canvas { cursor: pointer; }
+
+/* Header */
+.site-header {
+  pointer-events: none;
+}
+
+.logo,
+.navigation {
+  pointer-events: auto;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.start-recipe-button {
+  position: fixed;
+  z-index: 6;
+  bottom: 5%;
+  left: 50%;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 10px);
+  transition:
+    background .25s ease,
+    border-color .25s ease,
+    color .25s ease,
+    opacity .25s ease,
+    transform .25s ease,
+    visibility 0s linear .25s;
+}
+
+.start-recipe-button.visible {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+  transition-delay: 0s;
+}
+
+.start-recipe-button:hover {
+  border-color: var(--gold);
+  background: var(--terracotta);
+  color: var(--gold);
+  transform: translate(-50%, -2px);
+}
+
+@media (max-width: 900px) {
+  .site-header { padding: 26px 25px 0; }
+  .navigation { gap: 10px; }
+  .navigation a { min-width: auto; padding: 8px 20px 9px; font-size: 13px; }
+}
+
+@media (max-width: 620px) {
+  .prototype { min-height: 0; }
+}

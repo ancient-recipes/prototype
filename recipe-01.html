@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ancient Recipes — Recipe 01</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=La+Belle+Aurore&family=Pirata+One&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="css/shared.css">
+  <link rel="stylesheet" href="css/recipe-01.css">
+</head>
+
+<body>
+  <main class="recipe-table">
+   
+    <header class="site-header">
+
+      <a class="back-button" href="recipes.html" aria-label="Back to books" title="Back to books">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M15 5 8 12l7 7" />
+        </svg>
+      </a>
+
+      <button
+        class="music-button"
+        id="musicButton"
+        type="button"
+        aria-label="Mute music"
+        aria-pressed="false"
+        title="Mute music"
+      >
+        <svg class="sound-on-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M11 5 6.5 9H3v6h3.5l4.5 4V5Z" />
+          <path d="M15 9a4 4 0 0 1 0 6M17.5 6.5a7.5 7.5 0 0 1 0 11" />
+        </svg>
+        <svg class="sound-off-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M11 5 6.5 9H3v6h3.5l4.5 4V5Z" />
+          <path d="m16 9 5 6m0-6-5 6" />
+        </svg>
+      </button>
+    </header>
+
+    <audio id="backgroundMusic" src="music/piano-track.mp3" loop preload="auto"></audio>
+    <audio id="pageFlipSound" src="music/page-flip.mp3" preload="auto"></audio>
+    <audio id="bookOpenSound" src="music/book-open.mp3" preload="auto"></audio>
+    <audio id="bookCloseSound" src="music/book-close.mp3" preload="auto"></audio>
+
+    <div
+      id="bookScene"
+      role="application"
+      aria-label="Interactive recipe book viewed from above"
+    ></div>
+
+    <div class="book-controls" id="bookControls" aria-label="Recipe book controls">
+      <button id="previousPage" class="nav-button nav-button-left" type="button" aria-label="Previous page" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M20 12 L8 12 L12 5 M8 12 L12 19" />
+        </svg>
+      </button>
+      <button id="nextPage" class="nav-button nav-button-right" type="button" aria-label="Next page" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 12 L16 12 L12 5 M16 12 L12 19" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="zoom-controls" id="zoomControls" aria-label="Zoom controls">
+      <button id="zoomOut" class="zoom-button" type="button" aria-label="Zoom out" title="Zoom out" disabled>
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="14" cy="14" r="8" />
+          <path d="M20 20 27 27M10 14h8" />
+        </svg>
+      </button>
+      <button id="zoomIn" class="zoom-button" type="button" aria-label="Zoom in" title="Zoom in" disabled>
+        <svg viewBox="0 0 32 32" aria-hidden="true">
+          <circle cx="14" cy="14" r="8" />
+          <path d="M20 20 27 27M10 14h8M14 10v8" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="loading" id="loading">Preparing the recipe book…</div>
+  </main>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="js/recipe-01.js"></script>
+</body>
+</html>

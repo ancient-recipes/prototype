@@ -1,0 +1,232 @@
+:root {
+  --wood-dark: #1b0c08;
+  --wood: #351a0f;
+  --wood-light: #704129;
+}
+
+body {
+  overflow: hidden;
+  background: var(--wood-dark);
+}
+
+.recipe-table {
+  position: relative;
+  isolation: isolate;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(125deg, var(--wood) 0%, var(--wood-dark) 65%);
+}
+
+.recipe-table::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 150px rgba(0, 0, 0, .72);
+}
+
+#bookScene {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+}
+
+#bookScene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+#bookScene canvas:active {
+  cursor: grabbing;
+}
+
+.site-header {
+  padding: clamp(30px, 5vh, 54px) clamp(28px, 4.4vw, 84px) 0;
+  pointer-events: none;
+}
+
+.back-button,
+.music-button { pointer-events: auto; }
+
+.back-button,
+.music-button,
+.nav-button {
+  border: 1px solid var(--parchment);
+  background: rgba(40, 20, 13, .58);
+  color: var(--parchment);
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  transition: background .25s ease, border-color .25s ease, color .25s ease, transform .25s ease;
+}
+
+.back-button,
+.music-button {
+  padding: 9px 25px 11px;
+  border-radius: 999px;
+}
+
+.back-button,
+.music-button {
+  display: grid;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  padding: 0;
+  place-items: center;
+}
+
+.back-button svg,
+.music-button svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.music-button .sound-off-icon,
+.music-button.muted .sound-on-icon {
+  display: none;
+}
+
+.music-button.muted .sound-off-icon {
+  display: block;
+}
+
+.back-button:hover,
+.music-button:hover,
+.nav-button:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: var(--terracotta);
+  color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.nav-button:hover:not(:disabled) {
+  transform: scale(1.1);
+}
+
+.zoom-controls {
+  position: fixed;
+  z-index: 5;
+  right: clamp(20px, 5vw, 60px);
+  bottom: clamp(24px, 5vh, 56px);
+  display: flex;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.zoom-button {
+  display: grid;
+  width: 52px;
+  min-width: 52px;
+  height: 52px;
+  padding: 0;
+  place-items: center;
+  border: 1px solid var(--parchment);
+  border-radius: 50%;
+  background: rgba(40, 20, 13, .58);
+  color: var(--parchment);
+  cursor: pointer;
+  pointer-events: auto;
+  backdrop-filter: blur(5px);
+  transition: background .25s ease, border-color .25s ease, color .25s ease, opacity .25s ease, transform .25s ease;
+}
+
+.zoom-button svg {
+  width: 29px;
+  height: 29px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.zoom-button:hover:not(:disabled) {
+  border-color: var(--gold);
+  background: var(--terracotta);
+  color: var(--gold);
+  transform: scale(1.08);
+}
+
+.zoom-button:disabled {
+  cursor: default;
+  opacity: .35;
+}
+
+.book-controls {
+  position: fixed;
+  z-index: 5;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+  padding: 0 clamp(20px, 5vw, 60px);
+}
+
+.book-controls.visible {
+  pointer-events: none;
+}
+
+.nav-button {
+  display: grid;
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  padding: 0;
+  border-radius: 50%;
+  place-items: center;
+  pointer-events: auto;
+  opacity: 1;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.nav-button svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.nav-button:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 720px) {
+  .site-header { padding: 25px 22px 0; }
+  .back-button,
+  .music-button { width: 42px; min-width: 42px; height: 42px; padding: 0; }
+
+  .book-controls {
+    bottom: 22px;
+  }
+
+  .zoom-controls {
+    right: 22px;
+    bottom: 84px;
+  }
+
+  .book-controls button {
+    width: 130px;
+    min-width: 130px;
+    height: 46px;
+    padding: 0;
+  }
+
+}
