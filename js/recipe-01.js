@@ -40,7 +40,6 @@ async function startBackgroundMusic() {
   try {
     await backgroundMusic.play();
   } catch {
-    // Browsers may wait for the first user interaction before allowing audio.
   }
 }
 
