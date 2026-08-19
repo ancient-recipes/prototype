@@ -40,6 +40,7 @@ let isTransitioning = false;
 const bookshelfRestingRotation = Math.PI - THREE.MathUtils.degToRad(30);
 const bookshelfSwayAmount = THREE.MathUtils.degToRad(12);
 const bookshelfSwaySpeed = 0.00025;
+const bookshelfOffset = new THREE.Vector3(1.2, -0.1, 0);
 
 document.body.classList.add("overview");
 
@@ -49,6 +50,7 @@ new GLTFLoader().load(
     bookshelfModel = gltf.scene;
     bookshelfModel.scale.setScalar(0.1);
     bookshelfModel.rotation.y = bookshelfRestingRotation;
+    bookshelfModel.position.copy(bookshelfOffset);
 
     bookshelfModel.traverse(child => {
       if (!child.isMesh) return;
@@ -58,13 +60,6 @@ new GLTFLoader().load(
 
     scene.add(bookshelfModel);
     frameBookshelf();
-
-    bookshelfModel.position.x += 1.2;
-    bookshelfModel.position.y -= 0.1;
-    shelfZoomPosition.x += 1.2;
-    shelfZoomPosition.y -= 0.15;
-    shelfZoomTarget.x += 1.2;
-    shelfZoomTarget.y -= 0.15;
 
     loading.classList.add("hidden");
     renderer.setAnimationLoop(animate);
@@ -94,15 +89,25 @@ function frameBookshelf() {
   const distance = Math.max(verticalDistance, horizontalDistance) * 1.8;
   const homepageOffset = size.x * 0.7;
 
-  camera.position.set(centre.x + homepageOffset, centre.y, centre.z + distance);
-  cameraTarget.set(centre.x + homepageOffset, centre.y, centre.z);
+  // Keep the model's visual offset independent from its world-space bounds.
+  // Otherwise a resize frames the already-offset model and makes it jump left.
+  camera.position.set(
+    centre.x + homepageOffset - bookshelfOffset.x,
+    centre.y - bookshelfOffset.y,
+    centre.z + distance
+  );
+  cameraTarget.set(
+    centre.x + homepageOffset - bookshelfOffset.x,
+    centre.y - bookshelfOffset.y,
+    centre.z
+  );
   camera.lookAt(cameraTarget);
 
   // Camera look-at point: increase Y to move the bookshelf down on screen;
   // decrease Y to move it up.
   shelfZoomTarget.set(
     bounds.min.x + size.x * 0.721,
-    bounds.min.y + size.y * 0.5275,
+    bounds.min.y + size.y * 0.5275 - 0.05,
     centre.z
   );
   // Camera ending position: increase Y moves the camera up; decrease Y moves
