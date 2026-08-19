@@ -89,8 +89,6 @@ function frameBookshelf() {
   const distance = Math.max(verticalDistance, horizontalDistance) * 1.8;
   const homepageOffset = size.x * 0.7;
 
-  // Keep the model's visual offset independent from its world-space bounds.
-  // Otherwise a resize frames the already-offset model and makes it jump left.
   camera.position.set(
     centre.x + homepageOffset - bookshelfOffset.x,
     centre.y - bookshelfOffset.y,
@@ -103,15 +101,12 @@ function frameBookshelf() {
   );
   camera.lookAt(cameraTarget);
 
-  // Camera look-at point: increase Y to move the bookshelf down on screen;
-  // decrease Y to move it up.
   shelfZoomTarget.set(
     bounds.min.x + size.x * 0.721,
     bounds.min.y + size.y * 0.5275 - 0.05,
     centre.z
   );
-  // Camera ending position: increase Y moves the camera up; decrease Y moves
-  // it down. Smaller Z zooms in closer; larger Z ends farther away.
+
   shelfZoomPosition.set(
     shelfZoomTarget.x,
     shelfZoomTarget.y,
