@@ -101,8 +101,6 @@ function createBooks() {
     model.position.set(-centre.x, -rotatedBounds.min.y, -centre.z);
 
 
-
-    // Match the centre point used by the homepage bookshelf zoom.
     if (index === 0) {
       const bookHeight = rotatedBounds.getSize(new THREE.Vector3()).y;
       const bookCentreY = carouselCameraBaseY + bookHeight / 2;
